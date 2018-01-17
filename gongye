@@ -1,0 +1,18 @@
+rm(list=ls())
+gc()
+setwd("D:/gongye")
+file<-paste("201",c(0:3),".csv",sep="")
+#y<-list()
+for(i in 1:4){
+  x<-read.csv(file[i],stringsAsFactors = F,header=F)
+  n<-nrow(x)
+  d<-20000
+  m<-n%/%d+1
+  for (j in 1:m) {
+    y<-x[((j-1)*d+1):(j*d),]
+    file.new<-paste("201",i-1,"-",j,".csv",sep="")
+    write.csv(y,file.new)
+  }
+}
+
+
